@@ -4,3 +4,4 @@ seaborn
 pandas
 weasyprint
 jinja2
+reportlab

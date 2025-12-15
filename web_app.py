@@ -10,52 +10,130 @@ from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import mm
 
-#  CONFIG & CSS 
-st.set_page_config(page_title="Levelling Up Academia", layout="centered")
-
+# CONFIG
+st.set_page_config(
+    page_title="Levelling Up Academia",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
-    html, body, .main {background: linear-gradient(135deg, #fdf2fb, #f8f0ff); font-family: 'Poppins', sans-serif;}
-    
-    .big-title {
-        font-size: 68px !important; font-weight: 900 !important; text-align: center; margin: 40px 0 10px 0;
-        background: linear-gradient(90deg, #d946ef, #a855f7, #7c3aed);
-        -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        letter-spacing: -2px;
-    }
-    .subtitle {text-align: center; color: #6b7280; font-size: 26px; font-weight: 500; margin-bottom: 60px;}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
-    .content-box {
-        background: white; padding: 50px; border-radius: 28px; margin: 30px auto; max-width: 950px;
-        box-shadow: 0 15px 45px rgba(168,85,247,0.18); line-height: 1.9; font-size: 18px;
-    }
-    .content-box h2 {color: #7c3aed; font-size: 36px; font-weight: 800; text-align: center; margin-bottom: 35px;}
-    .content-box strong {color: #a855f7;}
+.stApp,
+section[data-testid="stAppViewContainer"] {
+    background: linear-gradient(135deg, #fefefe, #f2f4f8);
+    font-family: 'Poppins', sans-serif;
+}
 
-    .input-label {
-        font-size: 34px !important; font-weight: 800 !important; color: #7c3aed !important;
-        text-align: center; margin: 40px 0 20px 0;
-    }
-    .stTextInput > div > div > input {
-        border: 3px solid #7c3aed !important; border-radius: 16px !important;
-        padding: 16px 20px !important; text-align: center; font-size: 18px;
-    }
-    .stButton>button, .stDownloadButton>button {
-        background: linear-gradient(90deg, #de6ddf, #a855f7) !important; color: white !important;
-        border: none !important; border-radius: 60px !important; padding: 18px 90px !important;
-        font-size: 21px !important; font-weight: 800 !important; margin: 40px auto !important;
-        display: block !important; box-shadow: 0 10px 30px rgba(168,85,247,0.35);
-    }
-    .metric-card {
-        background: white; padding: 32px; border-radius: 24px; text-align: center; margin-bottom: 18px;
-        box-shadow: 0 12px 35px rgba(167,139,250,0.1); border: 1px solid #f0e5ff; min-height: 170px;
-    }
-    .metric-label {color: #8b5cf6; font-size: 19px; font-weight: 700; margin-bottom: 8px;}
-    .metric-value {font-size: 46px; font-weight: 900; color: #7c3aed;}
-    .researcher-name {
-        font-size: 48px; font-weight: 900; color: #a855f7; text-align: center; margin: 60px 0 40px;
-    }
+section[data-testid="stSidebar"] {
+    background: #eaeef7;
+    border-right: 1px solid #d1d7e0;
+}
+
+.big-title {
+    font-size: 68px !important;
+    font-weight: 900 !important;
+    text-align: center;
+    margin: 40px 0 10px 0;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -2px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #4b5563;
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 60px;
+}
+
+.content-box {
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 20px;
+    margin: 30px auto;
+    max-width: 950px;
+    box-shadow: 0 15px 40px rgba(99,102,241,0.12);
+    line-height: 1.9;
+    font-size: 18px;
+}
+
+.content-box h2 {
+    color: #6366f1;
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.content-box strong {
+    color: #8b5cf6;
+}
+
+.input-label {
+    font-size: 34px !important;
+    font-weight: 800 !important;
+    color: #6366f1 !important;
+    text-align: center;
+    margin: 40px 0 20px 0;
+}
+
+.stTextInput > div > div > input {
+    border: 3px solid #8b5cf6 !important;
+    border-radius: 16px !important;
+    padding: 16px 20px !important;
+    text-align: center;
+    font-size: 18px;
+}
+
+.stButton>button,
+.stDownloadButton>button {
+    background: linear-gradient(90deg, #6366f1, #8b5cf6) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 60px !important;
+    padding: 18px 90px !important;
+    font-size: 21px !important;
+    font-weight: 800 !important;
+    margin: 40px auto !important;
+    display: block !important;
+    box-shadow: 0 10px 30px rgba(99,102,241,0.35);
+}
+
+.metric-card {
+    background: white;
+    padding: 32px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 18px;
+    box-shadow: 0 12px 35px rgba(99,102,241,0.1);
+    border: 1px solid #e0e7ff;
+    min-height: 170px;
+}
+
+.metric-label {
+    color: #6366f1;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.metric-value {
+    font-size: 46px;
+    font-weight: 900;
+    color: #4f46e5;
+}
+
+.researcher-name {
+    font-size: 48px;
+    font-weight: 900;
+    color: #8b5cf6;
+    text-align: center;
+    margin: 60px 0 40px;
+}
 </style>
 """, unsafe_allow_html=True)
 
